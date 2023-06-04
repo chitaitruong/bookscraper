@@ -1,0 +1,14 @@
+$pip install scrapy
+$scrapy startproject bookscraper
+    cd bookscraper/bookscraper/spiders
+        scrapy genspider bookspider books.toscrape.com
+$pip install ipython
+    add shell=ipython to scrapy.cfg
+        $scrapy shell
+            $fetch('https://books.toscrape.com')
+            $books = response.css('article.product_pod')
+            $book = books[0] --> book.css('h3 a::text').get()
+            $book.css('.product_price .price_color::text').get()
+            $book.css('h3 a').attrib['href']
+            $response.css('li.next a ::attr(href)').get()
+$scrapy crawl bookspider
